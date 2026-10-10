@@ -1,0 +1,140 @@
+/* Twitter Media Downloader - Content Script Styles */
+
+.tmd-action-btn-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.tmd-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 9999px;
+  color: rgb(113, 118, 123);
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+  outline: none;
+  font-family: inherit;
+}
+
+.tmd-action-btn:hover {
+  background-color: rgba(29, 155, 240, 0.1);
+  color: rgb(29, 155, 240);
+}
+
+.tmd-action-btn:active {
+  transform: scale(0.92);
+}
+
+.tmd-action-btn svg {
+  width: 18.75px;
+  height: 18.75px;
+  fill: currentColor;
+  display: block;
+}
+
+/* Loading state */
+.tmd-action-btn.tmd-loading {
+  pointer-events: none;
+  color: rgb(29, 155, 240);
+}
+
+.tmd-spinner {
+  animation: tmd-spin 0.8s linear infinite;
+}
+
+@keyframes tmd-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.tmd-progress-text {
+  font-size: 11px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: rgb(29, 155, 240);
+  line-height: 1;
+}
+
+.tmd-overlay-btn .tmd-progress-text {
+  color: #ffffff;
+  font-size: 10px;
+}
+
+/* Success state */
+.tmd-action-btn.tmd-success {
+  color: rgb(0, 186, 124) !important;
+  background-color: rgba(0, 186, 124, 0.1) !important;
+  animation: tmd-pop 0.3s ease;
+}
+
+@keyframes tmd-pop {
+  0% { transform: scale(0.85); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+/* Error state */
+.tmd-action-btn.tmd-error {
+  color: rgb(244, 33, 46) !important;
+  background-color: rgba(244, 33, 46, 0.1) !important;
+  animation: tmd-shake 0.4s ease;
+}
+
+@keyframes tmd-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+/* Media Overlay Button (for individual media items) */
+.tmd-overlay-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  background-color: rgba(15, 20, 25, 0.75);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 9999px;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+}
+
+/* Show on hover of parent media container */
+*:hover > .tmd-overlay-btn,
+.tmd-overlay-btn:hover,
+.tmd-overlay-btn.tmd-loading,
+.tmd-overlay-btn.tmd-success {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.tmd-overlay-btn:hover {
+  background-color: rgba(29, 155, 240, 0.9);
+  border-color: rgba(29, 155, 240, 1);
+}
+
+.tmd-overlay-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
